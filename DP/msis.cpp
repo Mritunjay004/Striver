@@ -20,7 +20,3 @@ int maxSumIS(int arr[], int n)
 
     return *max_element(msis, msis + n);
 }
-
-int main()
-{
-}
