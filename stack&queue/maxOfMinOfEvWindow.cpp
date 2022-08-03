@@ -60,7 +60,7 @@ vector<int> maxOfMin(int arr[], int n)
 
     for (int i = n - 1; i >= 1; i--)
     {
-        ans[i] = max(ans[i], arr[i + 1]);
+        ans[i] = max(ans[i], ans[i + 1]);
     }
 
     vector<int> answer = vector<int>(ans.begin() + 1, ans.end());
