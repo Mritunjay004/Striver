@@ -1,6 +1,3 @@
-// An efficient C++ program to find
-// maximum of all minimums of
-// windows of different sizes
 #include <bits/stdc++.h>
 using namespace std;
 
