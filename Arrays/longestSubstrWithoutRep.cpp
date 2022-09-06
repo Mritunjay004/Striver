@@ -1,3 +1,6 @@
+
+#include <bits/stdc++.h>
+using namespace std;
 int lengthOfLongestSubstring(string s) {
   int start = 0, res = 0;
   unordered_map<char, int> mpp;
@@ -8,4 +11,8 @@ int lengthOfLongestSubstring(string s) {
     res = max(res, i - start + 1);
   }
   return res;
+}
+
+int main() {
+    cout<< lengthOfLongestSubstring("abba");
 }

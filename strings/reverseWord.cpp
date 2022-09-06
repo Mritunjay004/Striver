@@ -1,33 +1,31 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
 string reverseWords(string s)
 {
-    string temp = "";
-    string ans = "";
-    int left = 0, right = s.length() - 1;
+    string res;
+    int i = 0;
+    int n = s.length();
 
-    while (left <= right)
+    while (i < n)
     {
-        char ch = s[left];
-
-        if (ch != ' ')
-            temp += ch;
+        while (i < n and s[i] == ' ')
+            i++;
+        if (i >= n)
+            break;
+        int j = i + 1;
+        while (j < n and s[j] != ' ')
+            j++;
+        string sub = s.substr(i, j - i);
+        if (res.length() == 0)
+            res = sub;
         else
-        {
-            if (ans != "")
-                ans = temp + " " + ans;
-            else
-                ans = temp;
-            temp = "";
-        }
-        left++;
+            res = sub + ' ' + res;
+        i = j + 1;
     }
-
-    if (temp != "")
-    {
-        if (ans != "")
-            ans = temp + " " + ans;
-        else
-            ans = temp;
-    }
-
-    return ans;
+    return res;
+}
+int main()
+{
 }
