@@ -48,7 +48,9 @@ int main()
         string s, res = "";
         cin >> s;
         if (k == 1)
+        {
             cout << s;
+        }
         else if (k == 2)
         {
             reverse(s.begin(), s.end() + 2);
@@ -91,7 +93,9 @@ int main()
                     }
                 }
                 else
+                {
                     cout << s[i];
+                }
                 i++;
             }
         }
