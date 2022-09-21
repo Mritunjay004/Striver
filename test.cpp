@@ -1,40 +1,42 @@
 #include <bits/stdc++.h>
 using namespace std;
-bool check(string &perm, vector<vector<int>> &A, int n)
+bool isValidSudoku(vector<vector<char>> &board)
 {
-    for (int i = 0; i < n; i++)
+    const int cnt = 9; // ye object use krre hai niche isiliye
+    bool row[cnt][cnt] = {false};
+    bool col[cnt][cnt] = {false};
+    bool sub[cnt][cnt] = {false};
+
+    for (int r = 0; r < cnt; r++)
     {
-        if (perm[i] == '0')
-            continue;
-        for (int j = 0; j < n; j++)
+        for (int c = 0; c < cnt; c++)
         {
-            if (A[i][j] == 2)
+            if (board[r][c] == '.') // if no element
                 continue;
-            if ((A[i][j] == 1 && perm[j] == '0') ||
-                (A[i][j] == 0 && perm[j] == '1'))
+            int idx = board[r][c] - '0' - 1;  // char to num index
+            int area = (r / 3) * 3 + (c / 3); // area for sub array portion like it will give like 0,1,2,3,4....8 areas
+
+            if (row[r][idx] or col[r][idx] or sub[area][idx]) // means repeating
                 return false;
+            row[r][idx] = true;
+            col[r][idx] = true;
+            sub[area][idx] = true;
         }
     }
     return true;
 }
 
-int maximumGood(vector<vector<int>> &A)
-{
-    int n = A.size(), ans = 0;
-    for (int num = 1 << n; num < 1 << (n + 1); num++)
-    {
-        string permutation = bitset<15>(num).to_string().substr(15 - n);
-        if (check(permutation, A, n))
-        {
-            int c = count(begin(permutation), end(permutation), '1');
-            ans = max(ans, c);
-        }
-    }
-    return ans;
-}
-
 int main()
 {
-    vector<vector<int>> nums = {{2, 0}, {0, 2}};
-    cout << maximumGood(nums);
+    vector<vector<char>> board = {{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+                                  {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+                                  {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+                                  {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+                                  {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+                                  {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+                                  {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+                                  {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+                                  {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
+
+    bool res = isValidSudoku(board);
 }
