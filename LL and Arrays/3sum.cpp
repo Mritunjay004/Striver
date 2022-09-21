@@ -1,5 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
 //* brute force will be three loops i.e. 0(n^3)
 vector<vector<int>> threeSum(vector<int> &nums)
 {
@@ -32,10 +30,4 @@ vector<vector<int>> threeSum(vector<int> &nums)
             i++;
     }
     return ans;
-}
-
-int main()
-{
-    vector<int> nums = {-1, 0, 1, 2, -1, -4};
-    vector<vector<int>> res = threeSum(nums);
 }
