@@ -1,11 +1,12 @@
-int maxProfit(vector<int> &prices) {
-  int minimumPrice = INT_MAX;
-  int maxProf = 0;
-
-  for (int i = 0; i < prices.size(); i++) {
-    minimumPrice = min(minimumPrice, prices[i]);
-    maxProf = max(maxProf, prices[i] - minimumPrice);
-  }
-
-  return maxProf;
+int maxProfit(vector<int> &nums)
+{
+    int maxP = 0;
+    int smallNum = nums[0];
+    int n = nums.size();
+    for (int i = 1; i < n; i++)
+    {
+        smallNum = min(smallNum, nums[i]);
+        maxP = max(maxP, nums[i] - smallNum);
+    }
+    return maxP;
 }
